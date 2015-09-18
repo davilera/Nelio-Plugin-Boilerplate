@@ -2,8 +2,17 @@
 
 text=""
 read_option() {
-	echo -n "$1 ($2): "
+	exp=""
+	if [ "$2" != "" ]
+	then
+		exp=" ($2)"
+	fi
+	echo -n "$1$exp: "
 	read text
+	if [ "$text" = "" ]
+	then
+		text="$2"
+	fi
 }
 
 echo "Welcome to Nelio Plugin Boilerplate."
@@ -14,30 +23,31 @@ dir=""
 prefix=""
 
 ok="n"
+verbose="y"
 while [ "$ok" = "n" ]
 do
 	echo ""
 
 	echo "Plugin Information"
 	# ===================================================
-	read_option "  Plugin Name" "e.g. \`Nelio A/B Testing'"
+	read_option "  Plugin Name" "$name"
 	name=$text
 
-	read_option "  Current Version" "e.g. \`0.1.0'"
+	read_option "  Current Version" "$version"
 	version=$text
 
-	read_option "  Plugin Dir" "use no spaces, lower-case advised; e.g. \`nelio-ab-testing'"
+	read_option "  Plugin Dir" "$dir"
 	dir=$text
 
-	read_option "  Class Prefix" "use letters, numbers, and/or underscores; e.g. \`Nelio_AB_Testing' or \`NelioAB'"
+	read_option "  Class Prefix" "$prefix"
 	prefix=$text
 
 	echo "Author Information"
 	# ===================================================
-	read_option "  Author Name" "\`David Aguilera'"
+	read_option "  Author Name" "$author"
 	author=$text
 
-	read_option "  Author E-Mail" "\`david.aguilera@neliosoftware.com'"
+	read_option "  Author E-Mail" "$email"
 	email=$text
 
 	echo ""
@@ -48,9 +58,9 @@ do
 	echo "  Plugin Dir:   $dir"
 	echo "  Class Prefix: $prefix"
 	echo ""
-	echo "  Author: $name <$email>"
+	echo "  Author: $author <$email>"
 	echo ""
-	echo -n "Shall we continue? (Y/n)"
+	echo -n "Is everything OK? (Y/n) "
 	read ok
 done
 
@@ -64,10 +74,10 @@ slug=`echo "$domain" | sed -e "s/_/-/"`
 cp -r "plugin-name" "$dir"
 
 # Rename all files
-mv "$dir/plugin-name.php" "$dir/${path_slug}.php" 2>/dev/null
+mv "$dir/plugin-name.php" "$dir/${slug}.php" 2>/dev/null
 find $dir -type "f" | while read file
 do
-	dest=`echo "$file" | sed -e "s/plugin-name/$path_slug/"`
+	dest=`echo "$file" | sed -e "s/plugin-name/$slug/"`
 	mv "$file" "$dest" 2>/dev/null
 done
 

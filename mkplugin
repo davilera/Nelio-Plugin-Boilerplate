@@ -87,6 +87,7 @@ do
 	cat "$file" | \
 		sed -e "s/1.0.0/$version/g" | \
 		sed -e "s/Plugin Name/$name/g" | \
+		sed -e "s/* $name:/* Plugin Name:/g" | \
 		sed -e "s/Plugin_Name/$prefix/g" | \
 		sed -e "s/plugin_name/$domain/g" | \
 		sed -e "s/plugin-name/$slug/g" | \

@@ -3,13 +3,13 @@
 /**
  * The plugin bootstrap file.
  *
- * @since             1.0.0
+ * @since             0.0.0
  *
  * @wordpress-plugin
  * Plugin Name:       Plugin Name
  * Plugin URI:        http://example.com/plugin-name/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           0.0.0
  *
  * Author:            Your Name
  * Author URI:        http://example.com

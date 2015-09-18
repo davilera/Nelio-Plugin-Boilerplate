@@ -3,7 +3,7 @@
 /**
  * Setup menus in the WordPress Dashboard.
  *
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/admin
@@ -26,7 +26,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * The identifying name of Plugin Name's menus and submenus.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 * @var      string
 	 */
@@ -37,7 +37,7 @@ class Plugin_Name_Admin_Menus {
 	 *
 	 * @see https://codex.wordpress.org/Function_Reference/add_menu_page
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 * @var      string
 	 */
@@ -46,7 +46,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Initializes the class and sets its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __construct() {
@@ -64,7 +64,7 @@ class Plugin_Name_Admin_Menus {
 	 *  * Custom Page.      Priority 20.
 	 *  * Settings.         Priority 40.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function define_admin_hooks() {
@@ -80,7 +80,7 @@ class Plugin_Name_Admin_Menus {
 	 *
 	 * @return string the slug of the menu, so that plugins can add their own entries.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function get_menu_slug() {
@@ -92,7 +92,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Creates a new menu entry.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function create_menu_entry() {
@@ -119,7 +119,7 @@ class Plugin_Name_Admin_Menus {
 	 * The secondary "Add Experiment" entry is added so that we can have two
 	 * different pages.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function add_custom_pages() {
@@ -136,7 +136,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Adds the My Account (or Free Trial) and the Settings submenu entries.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function add_settings_page() {
@@ -155,7 +155,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Print the New Experiment Selector page.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function print_main_page() {
@@ -170,7 +170,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Print the New Experiment Selector page.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function print_some_page() {
@@ -182,7 +182,7 @@ class Plugin_Name_Admin_Menus {
 	/**
 	 * Print the Settings page.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function print_settings_page() {

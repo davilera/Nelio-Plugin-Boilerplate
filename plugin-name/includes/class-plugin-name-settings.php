@@ -3,7 +3,7 @@
 /**
  * This file has the Settings class, which defines and registers Plugin Name's Settings.
  *
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/models
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The Settings class, responsible of defining, registering, and providing access to all Plugin Name's settings.
  *
- * @since      1.0.0
+ * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/models
  * @author     Your Name <your.name@example.com>
@@ -27,7 +27,7 @@ final class Plugin_Name_Settings {
 	/**
 	 * The single instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   protected
 	 * @var      Plugin_Name_Settings
 	 */
@@ -36,7 +36,7 @@ final class Plugin_Name_Settings {
 	/**
 	 * The name that identifies Plugin Name's Settings
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 * @var      string
 	 */
@@ -45,7 +45,7 @@ final class Plugin_Name_Settings {
 	/**
 	 * An array of settings that have been requested and where not found in the associated get_option entry.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 * @var      array
 	 */
@@ -64,7 +64,7 @@ final class Plugin_Name_Settings {
 	 * )
 	 * `
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 * @var      array
 	 */
@@ -73,65 +73,60 @@ final class Plugin_Name_Settings {
 	/**
 	 * Initialize the class, set its properties, and add the proper hooks.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __construct() {
 
-// TODO
-//		$this->name = 'nab5';
-//
-//		$this->default_values = array();
-//
-//		$this->tabs = array(
-//			array(
-//				'name'   => 'basic',
-//				'label'  => __( 'Basic', 'plugin-name' ),
-//				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/settings-basic.php'
-//			),
-//			array(
-//				'name'   => 'advanced',
-//				'label'  => __( 'Advanced', 'plugin-name' ),
-//				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/settings-advanced.php'
-//			)
-//		);
-//
-//		foreach ( $this->tabs as $key => $tab ) {
-//			/**
-//			 * Filters the sections and fields of the given tab.
-//			 *
-//			 * @since    1.0.0
-//			 *
-//			 * @param    array    $fields    The fields (and sections) of the given tab in the settings screen.
-//			 */
-//			$this->tabs[$key]['fields'] = apply_filters( 'plugin_name_' . $tab['name']. '_settings',
-//				$tab['fields'] );
-//
-//		}
+		$this->name = 'plugin-name';
+
+		$this->default_values = array();
+
+		// Add as many tabs as you want. If you have one tab only, no tabs will be shown at all.
+		$this->tabs = array(
+			array(
+				'name'   => 'first-tab',
+				'label'  => __( 'First Tab', 'plugin-name' ),
+				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/first-tab-settings.php'
+			)
+		);
+
+		foreach ( $this->tabs as $key => $tab ) {
+			/**
+			 * Filters the sections and fields of the given tab.
+			 *
+			 * @since    0.0.0
+			 *
+			 * @param    array    $fields    The fields (and sections) of the given tab in the settings screen.
+			 */
+			$this->tabs[$key]['fields'] = apply_filters( 'plugin_name_' . $tab['name']. '_settings',
+				$tab['fields'] );
+
+		}
 
 	}
 
 	/**
 	 * Cloning instances of this class is forbidden.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
 
 	}
 
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
 
 	}
 
@@ -140,7 +135,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @return Plugin_Name_Settings the single instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public static function instance() {
@@ -164,7 +159,7 @@ final class Plugin_Name_Settings {
 	 *                    default value (during the construction of `Plugin_Name_Settings`),
 	 *                    then the parameter `$value` will be returned instead.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function get( $name, $value = false ) {
@@ -188,7 +183,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @param    string   $value   The name of the field whose default value we want to obtain.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function maybe_set_default_value( $name ) {
@@ -221,15 +216,14 @@ final class Plugin_Name_Settings {
 	/**
 	 * Registers all settings in WordPress using the Settings API.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function register() {
 
-// TODO
-//		foreach ( $this->tabs as $tab ) {
-//			$this->register_tab( $tab );
-//		}
+		foreach ( $this->tabs as $tab ) {
+			$this->register_tab( $tab );
+		}
 
 	}
 
@@ -238,7 +232,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @param    array    $tabs   A list with all fields.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function register_tab( $tab ) {
@@ -381,7 +375,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @return   string    the name of the settings.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function get_name() {
@@ -393,7 +387,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @return   string    the name of the option group.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function get_option_group() {
@@ -405,7 +399,7 @@ final class Plugin_Name_Settings {
 	 *
 	 * @return   string    the name of the option group.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function get_settings_page_name() {

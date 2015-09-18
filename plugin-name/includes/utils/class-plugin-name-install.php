@@ -3,7 +3,7 @@
 /**
  * The file that includes installation-related functions and actions.
  *
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/utils
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/utils
  *
- * @since      1.0.0
+ * @since      0.0.0
  * @author     Your Name <your.name@example.com>
  */
 class Plugin_Name_Install {
@@ -27,7 +27,7 @@ class Plugin_Name_Install {
 	/**
 	 * Hook in tabs.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 */
 	public static function init() {
 
@@ -38,7 +38,7 @@ class Plugin_Name_Install {
 	/**
 	 * Checks the currently-installed version and, if it's old, installs the new one.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 */
 	public static function check_version() {
 
@@ -50,7 +50,7 @@ class Plugin_Name_Install {
 			/**
 			 * Fires once the plugin has been updated.
 			 *
-			 * @since      1.0.0
+			 * @since      0.0.0
 			 */
 			do_action( 'plugin_name_updated' );
 		}
@@ -62,7 +62,7 @@ class Plugin_Name_Install {
 	 *
 	 * This function registers new post types, adds a few capabilities, and more.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 */
 	public static function install() {
 
@@ -79,7 +79,7 @@ class Plugin_Name_Install {
 		/**
 		 * Fires once the plugin has been installed.
 		 *
-		 * @since      1.0.0
+		 * @since      0.0.0
 		 */
 		do_action( 'plugin_name_installed' );
 

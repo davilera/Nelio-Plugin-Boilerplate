@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes
  * @author     Your Name <your.name@example.com>
@@ -36,7 +36,7 @@ final class Plugin_Name {
 	/**
 	 * The single instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   protected
 	 * @var      Plugin_Name
 	 */
@@ -45,7 +45,7 @@ final class Plugin_Name {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   protected
 	 * @var      string
 	 */
@@ -54,7 +54,7 @@ final class Plugin_Name {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   protected
 	 * @var      string
 	 */
@@ -67,13 +67,13 @@ final class Plugin_Name {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	private function __construct() {
 
 		$this->plugin_name = 'plugin_name';
-		$this->version = '1.0.0';
+		$this->version = '0.0.0';
 
 		$this->define_constants();
 		$this->load_dependencies();
@@ -90,7 +90,7 @@ final class Plugin_Name {
 		/**
 		 * Fires after (possibly) all dependencies are loaded and hooks are created.
 		 *
-		 * @since      1.0.0
+		 * @since      0.0.0
 		 */
 		do_action( 'plugin_name_loaded' );
 
@@ -99,12 +99,12 @@ final class Plugin_Name {
 	/**
 	 * Cloning instances of this class is forbidden.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
 
 	}
 
@@ -112,12 +112,12 @@ final class Plugin_Name {
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
 
 	}
 
@@ -127,7 +127,7 @@ final class Plugin_Name {
 	 *
 	 * @return Plugin_Name the single instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public static function instance() {
@@ -142,7 +142,7 @@ final class Plugin_Name {
 	/**
 	 * Defines the constants.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   public
 	 */
 	public static function define_constants() {
@@ -162,7 +162,7 @@ final class Plugin_Name {
 	 * @param    string   $type    ajax, frontend or admin
 	 * @return   bool
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function is_request( $type ) {
@@ -185,7 +185,7 @@ final class Plugin_Name {
 	/**
 	 * Load the (minimum) required dependencies for this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -212,7 +212,7 @@ final class Plugin_Name {
 	 * Uses the Plugin_Name_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -227,7 +227,7 @@ final class Plugin_Name {
 	/**
 	 * Register the main hooks related to the admin area functionality of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -246,7 +246,7 @@ final class Plugin_Name {
 	/**
 	 * Register the main hooks related to the public-facing functionality of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -262,7 +262,7 @@ final class Plugin_Name {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -272,7 +272,7 @@ final class Plugin_Name {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
@@ -284,7 +284,7 @@ final class Plugin_Name {
 /**
  * Returns the single instance of the Plugin_Name class.
  *
- * @since    1.0.0
+ * @since    0.0.0
  * @return   Plugin_Name    The single instance of the Plugin_Name class.
  */
 function Plugin_Name() {

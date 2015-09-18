@@ -5,7 +5,7 @@
  *
  * General core functions available on both the front-end and admin.
  *
- * @since      1.0.0
+ * @since      0.0.0
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes

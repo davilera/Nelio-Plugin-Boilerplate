@@ -2,7 +2,7 @@
 /**
  * Displays the UI for configuring the plugin.
  *
- * @since      1.0.0
+ * @since      0.0.0
  * @author     Your Name <your.name@example.com>
  *
  * @package    Plugin_Name
@@ -12,7 +12,7 @@
 
 <div class="wrap">
 
-	<h2><?php _e( 'Plugin Name - Settings', 'nelioab' ); ?></h2>
+	<h2><?php _e( 'Plugin Name - Settings', 'plugin-name' ); ?></h2>
 
 	<?php settings_errors(); ?>
 

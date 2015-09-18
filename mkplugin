@@ -1,0 +1,85 @@
+#!/bin/sh
+
+text=""
+read_option() {
+	echo -n "$1 ($2): "
+	read text
+}
+
+echo "Welcome to Nelio Plugin Boilerplate."
+echo "Let's create your new plugin!"
+
+name=""
+dir=""
+prefix=""
+
+ok="n"
+while [ "$ok" = "n" ]
+do
+	echo ""
+
+	echo "Plugin Information"
+	# ===================================================
+	read_option "  Plugin Name" "e.g. \`Nelio A/B Testing'"
+	name=$text
+
+	read_option "  Current Version" "e.g. \`0.1.0'"
+	version=$text
+
+	read_option "  Plugin Dir" "use no spaces, lower-case advised; e.g. \`nelio-ab-testing'"
+	dir=$text
+
+	read_option "  Class Prefix" "use letters, numbers, and/or underscores; e.g. \`Nelio_AB_Testing' or \`NelioAB'"
+	prefix=$text
+
+	echo "Author Information"
+	# ===================================================
+	read_option "  Author Name" "\`David Aguilera'"
+	author=$text
+
+	read_option "  Author E-Mail" "\`david.aguilera@neliosoftware.com'"
+	email=$text
+
+	echo ""
+	echo "Please, check the information your provided:"
+	echo ""
+	echo "  Plugin Name:  $name"
+	echo "  Version:      $version"
+	echo "  Plugin Dir:   $dir"
+	echo "  Class Prefix: $prefix"
+	echo ""
+	echo "  Author: $name <$email>"
+	echo ""
+	echo -n "Shall we continue? (Y/n)"
+	read ok
+done
+
+echo ""
+
+# Prepare some variables
+domain=`echo "$prefix" | tr "[:upper:]" "[:lower:]"`
+slug=`echo "$domain" | sed -e "s/_/-/"`
+
+# Create the new plugin
+cp -r "plugin-name" "$dir"
+
+# Rename all files
+mv "$dir/plugin-name.php" "$dir/${path_slug}.php" 2>/dev/null
+find $dir -type "f" | while read file
+do
+	dest=`echo "$file" | sed -e "s/plugin-name/$path_slug/"`
+	mv "$file" "$dest" 2>/dev/null
+done
+
+# Make the appropriate changes in the contents
+find $dir -type "f" | while read file
+do
+	cat "$file" | \
+		sed -e "s/Plugin Name/$name/g" | \
+		sed -e "s/Plugin_Name/$prefix/g" | \
+		sed -e "s/plugin_name/$domain/g" | \
+		sed -e "s/plugin-name/$slug/g" | \
+		sed -e "s/Your Name/$author/g" | \
+		sed -e "s/your.name@example.com/$email/g" > "$dir/aux"
+	mv "$dir/aux" "$file"
+done

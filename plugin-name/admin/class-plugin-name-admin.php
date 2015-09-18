@@ -61,12 +61,11 @@ class Plugin_Name_Admin {
 
 	public function includes() {
 
-// TODO
-//		if ( ! defined( 'DOING_AJAX' ) ) {
-//			require_once( PLUGIN_NAME_ADMIN_DIR . '/class-plugin-name-admin-menus.php' );
-//			$admin_menus = new Plugin_Name_Admin_Menus();
-//			$admin_menus->define_admin_hooks();
-//		}
+		if ( ! defined( 'DOING_AJAX' ) ) {
+			require_once( PLUGIN_NAME_ADMIN_DIR . '/class-plugin-name-admin-menus.php' );
+			$admin_menus = new Plugin_Name_Admin_Menus();
+			$admin_menus->define_admin_hooks();
+		}
 
 	}
 

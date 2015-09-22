@@ -24,7 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Plugin_Name_Checkbox_Set_Setting extends Plugin_Name_Abstract_Setting {
 
 	/**
-	 * TODO
+	 * List of checkboxes.
+	 *
+	 * In this particular case, the instantiated checkboxes are not directly
+	 * registered. We register the whole set using this instance.
+	 *
+	 * @see Plugin_Name_Checkbox_Setting
+	 *
+	 * @var array
 	 *
 	 * @since    0.0.0
 	 * @access   protected
@@ -35,8 +42,7 @@ class Plugin_Name_Checkbox_Set_Setting extends Plugin_Name_Abstract_Setting {
 	/**
 	 * Creates a new instance of this class.
 	 *
-	 * @param    string   $name       The name that identifies this setting.
-	 * @param    array    $options    TODO
+	 * @param    array    $options    A list with the required information for creating checkboxes.
 	 *
 	 * @since    0.0.0
 	 * @access   public
@@ -62,15 +68,17 @@ class Plugin_Name_Checkbox_Set_Setting extends Plugin_Name_Abstract_Setting {
 	}
 
 	/**
-	 * TODO
+	 * Sets the value of this setting to the given value.
 	 *
-	 * @param    string   $name    TODO
-	 * @param    boolean  $value   Whether this checkbox is checked or not.
+	 * @param    array    $tuple    A tuple with the name of the specific checkbox and its concrete value.
 	 *
 	 * @since    0.0.0
 	 * @access   public
 	 */
-	public function set_value( $name, $value=false ) {
+	public function set_value( $tuple ) {
+
+		$name = $tuple['name'];
+		$value = $tuple['value'];
 
 		if ( isset( $this->checkboxes[$name] ) ) {
 			$checkbox = $this->checkboxes[$name];

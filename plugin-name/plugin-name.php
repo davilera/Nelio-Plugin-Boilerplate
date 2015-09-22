@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PLUGIN_NAME_DIR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+define( 'PLUGIN_NAME_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
 /**
  * The code that runs during plugin activation.
@@ -33,7 +33,7 @@ define( 'PLUGIN_NAME_DIR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) )
  */
 function activate_plugin_name() {
 	/** @noinspection PhpIncludeInspection */
-	require_once( PLUGIN_NAME_DIR_PATH . '/includes/utils/class-plugin-name-activator.php' );
+	require_once( PLUGIN_NAME_DIR . '/includes/utils/class-plugin-name-activator.php' );
 	Plugin_Name_Activator::activate();
 }
 
@@ -43,7 +43,7 @@ function activate_plugin_name() {
  */
 function deactivate_plugin_name() {
 	/** @noinspection PhpIncludeInspection */
-	require_once( PLUGIN_NAME_DIR_PATH . '/includes/utils/class-plugin-name-deactivator.php' );
+	require_once( PLUGIN_NAME_DIR . '/includes/utils/class-plugin-name-deactivator.php' );
 	Plugin_Name_Deactivator::deactivate();
 }
 
@@ -59,7 +59,7 @@ register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
 
 // The core plugin class that is used to define internationalization,
 // admin-specific hooks, and public-facing site hooks.
-require( PLUGIN_NAME_DIR_PATH . '/includes/class-plugin-name.php' );
+require( PLUGIN_NAME_DIR . '/includes/class-plugin-name.php' );
 
 // Let's begin the execution of the plugin.
 //

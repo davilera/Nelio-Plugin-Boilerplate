@@ -127,9 +127,12 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 	}
 
 	/**
-	 * TODO
+	 * This function generates a label for this field.
 	 *
-	 * @return   string   TODO
+	 * In particular, it adds the `label` tag and a help icon (if a description
+	 * was provided).
+	 *
+	 * @return   string   the label for this field.
 	 *
 	 * @since    0.0.0
 	 * @access   protected
@@ -139,8 +142,7 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 		$label = '<label for="' . $this->option_name . '">' . $this->label . '</label>';
 
 		if ( ! empty( $this->desc ) ) {
-			// TODO
-			$img = 'http://local.wordpress.dev/wp-content/plugins/woocommerce/assets/images/help.png';
+			$img = PLUGIN_NAME_ADMIN_URL . '/images/help.png';
 			$label .= '<img style="float:right;margin-right:-15px;" src="' . $img . '" height="16" width="16" />';
 		}
 

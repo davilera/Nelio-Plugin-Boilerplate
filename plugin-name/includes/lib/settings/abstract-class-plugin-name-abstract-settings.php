@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TODO
+ * This file contains the class for managing any plugin's settings.
  *
  * @since      0.0.0
  *
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * TODO
+ * This class processes an array of settings and makes them available to WordPress.
  *
  * @since      0.0.0
  * @package    Plugin_Name
@@ -310,8 +310,11 @@ abstract class Plugin_Name_Abstract_Settings {
 					$setting = new Plugin_Name_Checkbox_Set_Setting( $field['options'] );
 
 					foreach ( $field['options'] as $cb ) {
-						$value = $this->get( $cb['name'] );
-						$setting->set_value( $cb['name'], $value );
+						$tuple = array(
+								'name'  => $cb['name'],
+								'value' => $value
+							);
+						$setting->set_value( $tuple );
 					}
 
 					$setting->register(

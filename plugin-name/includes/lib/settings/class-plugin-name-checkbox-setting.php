@@ -98,8 +98,7 @@ class Plugin_Name_Checkbox_Setting extends Plugin_Name_Abstract_Setting {
 	// @Override
 	protected function generate_label() {
 
-		$label = '<label for="' . $this->option_name . '">' . $this->label . '</label>';
-		return $label;
+		return $this->label;
 
 	}
 

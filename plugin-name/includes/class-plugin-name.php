@@ -147,9 +147,9 @@ final class Plugin_Name {
 	 */
 	public static function define_constants() {
 
-		define( 'PLUGIN_NAME_ADMIN_DIR',    PLUGIN_NAME_DIR_PATH . '/admin' );
-		define( 'PLUGIN_NAME_PUBLIC_DIR',   PLUGIN_NAME_DIR_PATH . '/public' );
-		define( 'PLUGIN_NAME_INCLUDES_DIR', PLUGIN_NAME_DIR_PATH . '/includes' );
+		define( 'PLUGIN_NAME_ADMIN_DIR',    PLUGIN_NAME_DIR . '/admin' );
+		define( 'PLUGIN_NAME_PUBLIC_DIR',   PLUGIN_NAME_DIR . '/public' );
+		define( 'PLUGIN_NAME_INCLUDES_DIR', PLUGIN_NAME_DIR . '/includes' );
 
 		define( 'PLUGIN_NAME_PLUGIN_URL', untrailingslashit( plugin_dir_url( dirname( __FILE__ ) ) ) );
 		define( 'PLUGIN_NAME_ADMIN_URL',  PLUGIN_NAME_PLUGIN_URL . '/admin' );

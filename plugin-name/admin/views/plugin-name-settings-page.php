@@ -25,14 +25,5 @@
 		?>
 	</form>
 
-	<script type="text/javascript">
-	(function($) {
-		$( 'img.plugin-name-help' ).parent().click( function( ev ) {
-			ev.preventDefault();
-			$(this).closest( 'tr' ).find( '.plugin-name-desc' ).toggle();
-		});
-	})(jQuery);
-	</script>
-
 </div><!-- .wrap -->
 

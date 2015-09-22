@@ -151,9 +151,9 @@ final class Plugin_Name {
 		define( 'PLUGIN_NAME_PUBLIC_DIR',   PLUGIN_NAME_DIR . '/public' );
 		define( 'PLUGIN_NAME_INCLUDES_DIR', PLUGIN_NAME_DIR . '/includes' );
 
-		define( 'PLUGIN_NAME_PLUGIN_URL', untrailingslashit( plugin_dir_url( dirname( __FILE__ ) ) ) );
-		define( 'PLUGIN_NAME_ADMIN_URL',  PLUGIN_NAME_PLUGIN_URL . '/admin' );
-		define( 'PLUGIN_NAME_PUBLIC_URL', PLUGIN_NAME_PLUGIN_URL . '/public' );
+		define( 'PLUGIN_NAME_ADMIN_URL',    PLUGIN_NAME_URL . '/admin' );
+		define( 'PLUGIN_NAME_INCLUDES_URL', PLUGIN_NAME_URL . '/includes' );
+		define( 'PLUGIN_NAME_PUBLIC_URL',   PLUGIN_NAME_URL . '/public' );
 
 	}
 
@@ -238,7 +238,7 @@ final class Plugin_Name {
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
 
-		add_action( 'admin_init', array( Plugin_Name_Settings::instance(), 'register' ) );
+		add_action( 'init', array( Plugin_Name_Settings::instance(), 'define_admin_hooks' ) );
 
 		add_action( 'init', array( $plugin_admin, 'includes' ) );
 

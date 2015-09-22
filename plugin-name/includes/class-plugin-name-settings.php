@@ -49,14 +49,14 @@ final class Plugin_Name_Settings extends Plugin_Name_Abstract_Settings {
 			array(
 				'name'   => 'standard-fields',
 				'label'  => __( 'Standard Fields', 'plugin-name' ),
-				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/standard-fields-tab-settings.php'
+				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/standard-fields-tab.php'
 			),
 
-//			array(
-//				'name'   => 'advanced-fields',
-//				'label'  => __( 'Advanced Fields', 'plugin-name' ),
-//				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/advanced-fields-settings.php'
-//			)
+			array(
+				'name'   => 'advanced-fields',
+				'label'  => __( 'Advanced Fields', 'plugin-name' ),
+				'fields' => include PLUGIN_NAME_INCLUDES_DIR . '/data/advanced-fields-tab.php'
+			)
 
 		);
 

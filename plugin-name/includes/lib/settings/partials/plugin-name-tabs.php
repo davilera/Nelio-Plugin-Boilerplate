@@ -2,7 +2,8 @@
 /**
  * Prints the list of tabs and highlights the first one.
  *
- * @var     array    $tabs    the list of tabs
+ * @var     array     $tabs          the list of tabs.
+ * @var     string    $opened_tab    the name of the currently-opened tab.
  *
  * @since      0.0.0
  * @author     Your Name <your.name@example.com>
@@ -14,10 +15,13 @@
 ?>
 
 <h2 class="nav-tab-wrapper woo-nav-tab-wrapper"><?php
-	$active = ' nav-tab-active';
 	foreach ( $tabs as $tab ) {
-		$pattern = '<a id="%1$s-tab" href="#" class="nav-tab%3$s">%2$s</a>';
+		if ( $tab['name'] === $opened_tab ) {
+			$active = ' nav-tab-active';
+		} else {
+			$active = '';
+		}
+		$pattern = '<span id="%1$s" class="nav-tab%3$s" style="cursor:pointer;">%2$s</span>';
 		printf( $pattern, esc_attr( $tab['name'] ), esc_html( $tab['label'] ), $active );
-		$active = '';
 	}
 ?></h2>

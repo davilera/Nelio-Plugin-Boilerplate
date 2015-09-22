@@ -38,8 +38,8 @@ foreach ( $options as $option ) {
 }
 
 if ( ! empty( $desc ) ) { ?>
-	<div class="setting-help">
-		<p><span class="plugin-name-desc description" style="display:none;"><?php echo $desc; ?><?php
+	<div class="setting-help" style="display:none;">
+		<p><span class="description"><?php echo $desc; ?><?php
 			if ( ! empty( $more ) ) { ?>
 				<a href="<?php echo esc_attr( $more ); ?>"><?php _e( 'Read more...' ); ?></a>
 			<?php
@@ -48,7 +48,7 @@ if ( ! empty( $desc ) ) { ?>
 
 		<?php
 		if ( count( $described_options ) > 0 ) { ?>
-			<ul class="plugin-name-desc" style="display:none;list-style-type:disc;margin-left:3em;">
+			<ul style="list-style-type:disc;margin-left:3em;">
 				<?php
 				foreach ( $described_options as $option ) { ?>
 					<li><span class="description"><strong><?php echo $option['label']; ?>.</strong>

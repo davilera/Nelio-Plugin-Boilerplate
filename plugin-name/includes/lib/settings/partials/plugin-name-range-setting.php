@@ -23,7 +23,7 @@
 	/>
 <?php
 if ( ! empty( $verbose_value ) ) { ?>
-		<p id="label-<?php echo $id; ?>"><span class="plugin-name-desc description" style="display:none;"></span></p>
+		<p id="label-<?php echo $id; ?>"><span class="description"></span></p>
 		<script type="text/javascript">
 		(function() {
 			var elem = jQuery( '#<?php echo $id; ?>' );
@@ -43,8 +43,8 @@ if ( ! empty( $verbose_value ) ) { ?>
 
 <?php
 if ( ! empty( $desc ) ) { ?>
-	<div class="setting-help">
-		<p><span class="plugin-name-desc description" style="display:none;"><?php
+	<div class="setting-help" style="display:none;">
+		<p><span class="description"><?php
 			echo $desc;
 			if ( ! empty( $more ) ) { ?>
 				<a href="<?php echo esc_attr( $more ); ?>"><?php _e( 'Read more...' ); ?></a>

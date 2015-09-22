@@ -26,6 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'PLUGIN_NAME_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+define( 'PLUGIN_NAME_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 /**
  * The code that runs during plugin activation.

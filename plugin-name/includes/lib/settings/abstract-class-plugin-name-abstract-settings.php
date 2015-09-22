@@ -62,6 +62,17 @@ abstract class Plugin_Name_Abstract_Settings {
 	private $tabs;
 
 	/**
+	 * Current tab name.
+	 *
+	 * This is an aux var for enclosing all fields within a tab.
+	 *
+	 * @since    0.0.0
+	 * @access   private
+	 * @var      string
+	 */
+	private $current_tab_name;
+
+	/**
 	 * Initialize the class, set its properties, and add the proper hooks.
 	 *
 	 * @since    0.0.0
@@ -212,12 +223,20 @@ abstract class Plugin_Name_Abstract_Settings {
 	 */
 	private function register_tab( $tab ) {
 
-		// Prepare a default section (if none was used)
-		if ( $tab['fields'][0]['type'] != 'section' ) {
-			$tab_name = $tab['name'];
-			$section = "plugin-name-$tab_name-default-section";
-			add_settings_section( $section, '', '', $this->get_settings_page_name() );
+		if ( count( $tab['fields'] ) === 0 ) {
+			return;
 		}
+
+		// Create a default section (which will also be used for enclosing all
+		// fields within the current tab)
+		$section = 'plugin-name-' . $tab['name'] . '-opening-section';
+		$this->current_tab_name = $tab['name'];
+		add_settings_section(
+				$section,
+				'',
+				array( $this, 'open_tab' ),
+				$this->get_settings_page_name()
+			);
 
 		foreach ( $tab['fields'] as $field ) {
 
@@ -405,6 +424,50 @@ abstract class Plugin_Name_Abstract_Settings {
 			}
 		}
 
+		// Close tab
+		$section = 'plugin-name-' . $tab['name'] . '-closing-section';
+		add_settings_section(
+				$section,
+				'',
+				array( $this, 'close_tab' ),
+				$this->get_settings_page_name()
+			);
+
+	}
+
+	/**
+	 * Opens a DIV tag for enclosing all fields within a tab.
+	 *
+	 * If the tab we're opening is the first one, we also print the actual tabs.
+	 *
+	 * @since    0.0.0
+	 * @access   public
+	 */
+	public function open_tab() {
+		// Print the actual tabs (if there's more than one tab)
+		if ( count( $this->tabs ) > 1 &&
+				$this->current_tab_name === $this->tabs[0]['name'] ) {
+			$tabs = $this->tabs;
+			include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-tabs.php';
+		}
+
+		// And now group all the fields under
+		if ( $this->current_tab_name === $this->tabs[0]['name'] ) {
+			$invisible = '';
+		} else {
+			$invisible = ' style="display:none;"';
+		}
+		echo '<div id="' . $this->current_tab_name . '-tab-content"' . $invisible . '>';
+	}
+
+	/**
+	 * Closes a tab div.
+	 *
+	 * @since    0.0.0
+	 * @access   public
+	 */
+	public function close_tab() {
+		echo '</div>';
 	}
 
 	/**

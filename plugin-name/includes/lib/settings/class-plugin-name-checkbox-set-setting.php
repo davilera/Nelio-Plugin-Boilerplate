@@ -31,11 +31,9 @@ class Plugin_Name_Checkbox_Set_Setting extends Plugin_Name_Abstract_Setting {
 	 *
 	 * @see Plugin_Name_Checkbox_Setting
 	 *
-	 * @var array
-	 *
 	 * @since    0.0.0
 	 * @access   protected
-	 * @var      boolean
+	 * @var      array
 	 */
 	protected $checkboxes;
 

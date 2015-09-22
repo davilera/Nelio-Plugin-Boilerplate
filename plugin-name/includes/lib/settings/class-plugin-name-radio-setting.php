@@ -1,12 +1,12 @@
 <?php
 
 /**
- * This file contains the Select Setting class.
+ * This file contains the Radio Setting class.
  *
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -15,16 +15,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * This class represents a Select setting.
+ * This class represents a Radio setting.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
-class Plugin_Name_Select_Setting extends Plugin_Name_Abstract_Setting {
+class Plugin_Name_Radio_Setting extends Plugin_Name_Abstract_Setting {
 
 	/**
-	 * The currently-selected value of this select.
+	 * The currently-selected value of this radio.
 	 *
 	 * @since    0.0.0
 	 * @access   protected
@@ -60,7 +60,7 @@ class Plugin_Name_Select_Setting extends Plugin_Name_Abstract_Setting {
 	/**
 	 * Specifies which option is selected.
 	 *
-	 * @param    string   $value    The currently-selected value of this select.
+	 * @param    string   $value    The currently-selected value of this radio.
 	 *
 	 * @since    0.0.0
 	 * @access   public
@@ -81,7 +81,7 @@ class Plugin_Name_Select_Setting extends Plugin_Name_Abstract_Setting {
 		$desc     = $this->desc;
 		$more     = $this->more;
 		// -----------------------------------------------
-		include PLUGIN_NAME_DIR_PATH . '/admin/views/partials/settings/plugin-name-select-setting.php';
+		include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-radio-setting.php';
 
 	}
 

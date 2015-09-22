@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin_Name A/B Testing's settings.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
@@ -115,6 +115,7 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 			array( $this, 'sanitize' ) // Sanitization function
 		);
 
+		$label = $this->generate_label();
 		add_settings_field(
 			$this->name,  // The ID of the settings field
 			$label,       // The name of the field of setting(s)
@@ -122,6 +123,28 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 			$page,
 			$section
 		);
+
+	}
+
+	/**
+	 * TODO
+	 *
+	 * @return   string   TODO
+	 *
+	 * @since    0.0.0
+	 * @access   protected
+	 */
+	protected function generate_label() {
+
+		$label = '<label for="' . $this->option_name . '">' . $this->label . '</label>';
+
+		if ( ! empty( $this->desc ) ) {
+			// TODO
+			$img = 'http://local.wordpress.dev/wp-content/plugins/woocommerce/assets/images/help.png';
+			$label .= '<img style="float:right;margin-right:-15px;" src="' . $img . '" height="16" width="16" />';
+		}
+
+		return $label;
 
 	}
 

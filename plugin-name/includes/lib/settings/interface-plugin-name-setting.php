@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * The interface for a setting in our plugin.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 interface Plugin_Name_Setting {

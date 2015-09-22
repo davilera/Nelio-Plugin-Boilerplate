@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This class represents a checkbox setting.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 class Plugin_Name_Checkbox_Setting extends Plugin_Name_Abstract_Setting {
@@ -49,6 +49,18 @@ class Plugin_Name_Checkbox_Setting extends Plugin_Name_Abstract_Setting {
 	/**
 	 * Sets whether this checkbox is checked or not.
 	 *
+	 * @param    string   $option_name   The name of an option to sanitize and save.
+	 *
+	 * @since    0.0.0
+	 * @access   public
+	 */
+	public function set_option_name( $option_name ) {
+		$this->option_name = $option_name;
+	}
+
+	/**
+	 * Sets whether this checkbox is checked or not.
+	 *
 	 * @param    boolean  $value   Whether this checkbox is checked or not.
 	 *
 	 * @since    0.0.0
@@ -69,7 +81,7 @@ class Plugin_Name_Checkbox_Setting extends Plugin_Name_Abstract_Setting {
 		$more    = $this->more;
 		$checked = $this->checked;
 		// -----------------------------------------------
-		include PLUGIN_NAME_DIR_PATH . '/admin/views/partials/settings/plugin-name-checkbox-setting.php';
+		include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-checkbox-setting.php';
 
 	}
 
@@ -81,6 +93,14 @@ class Plugin_Name_Checkbox_Setting extends Plugin_Name_Abstract_Setting {
 			$input[$this->name] = false;
 		}
 		return $input;
+	}
+
+	// @Override
+	protected function generate_label() {
+
+		$label = '<label for="' . $this->option_name . '">' . $this->label . '</label>';
+		return $label;
+
 	}
 
 }

@@ -1,22 +1,22 @@
 <?php
 /**
- * Displays an text area setting.
+ * Displays an input setting.
  *
  * @since      0.0.0
  * @author     Your Name <your.name@example.com>
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/views/partials
+ * @subpackage Plugin_Name/includes/lib/settings/partials
  */
 
 ?>
 
-<textarea
+<input
+	type="<?php echo $type; ?>"
 	id="<?php echo $id; ?>"
 	<?php if ( ! empty( $placeholder ) ) echo 'placeholder="' . esc_attr( $placeholder ) . '"'; ?>
-	name="<?php echo $name; ?>" /><?php
-		echo $value;
-?></textarea>
+	name="<?php echo $name; ?>"
+	value="<?php echo esc_attr( $value ); ?>" />
 <?php
 if ( ! empty( $desc ) ) { ?>
 	<div class="setting-help">

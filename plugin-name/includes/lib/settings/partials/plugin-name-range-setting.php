@@ -8,7 +8,7 @@
  * @author     Your Name <your.name@example.com>
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/views/partials/settings
+ * @subpackage Plugin_Name/includes/lib/settings/partials
  */
 ?>
 

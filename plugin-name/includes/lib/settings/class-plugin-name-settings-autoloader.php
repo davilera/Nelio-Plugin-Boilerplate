@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/includes/utils
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -15,14 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Plugin Name Autoloader
+ * Plugin Name Settings Autoloader
  *
  * @since      0.0.0
  * @package    Plugin_Name
- * @subpackage Plugin_Name/includes/utils
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
-class Plugin_Name_Autoloader {
+class Plugin_Name_Settings_Autoloader {
 
 	/**
 	 * The Constructor
@@ -68,24 +68,26 @@ class Plugin_Name_Autoloader {
 		}
 
 		$dictionary = array();
-		$dictionary['Plugin_Name_Settings'] = '/includes/class-plugin-name-settings.php';
-		$dictionary['Plugin_Name_Abstract_Setting'] = '/admin/settings/abstract-class-plugin-name-abstract-setting.php';
-		$dictionary['Plugin_Name_Checkbox_Setting'] = '/admin/settings/class-plugin-name-checkbox-setting.php';
-		$dictionary['Plugin_Name_Conversion_Value_Setting'] = '/admin/settings/class-plugin-name-conversion-value-setting.php';
-		$dictionary['Plugin_Name_Input_Setting'] = '/admin/settings/class-plugin-name-input-setting.php';
-		$dictionary['Plugin_Name_Notification_Email_Setting'] = '/admin/settings/class-plugin-name-notification-email-setting.php';
-		$dictionary['Plugin_Name_Quota_Limit_Setting'] = '/admin/settings/class-plugin-name-quota-limit-setting.php';
-		$dictionary['Plugin_Name_Range_Setting'] = '/admin/settings/class-plugin-name-range-setting.php';
-		$dictionary['Plugin_Name_Select_Algorithm_Setting'] = '/admin/settings/class-plugin-name-select-algorithm-setting.php';
-		$dictionary['Plugin_Name_Select_Setting'] = '/admin/settings/class-plugin-name-select-setting.php';
-		$dictionary['Plugin_Name_Setting'] = '/admin/settings/interface-plugin-name-setting.php';
+		$dictionary['Plugin_Name_Abstract_Setting'] = '/lib/settings/abstract-class-plugin-name-abstract-setting.php';
+		$dictionary['Plugin_Name_Checkbox_Setting'] = '/lib/settings/class-plugin-name-checkbox-setting.php';
+		$dictionary['Plugin_Name_Checkbox_Set_Setting'] = '/lib/settings/class-plugin-name-checkbox-set-setting.php';
+		$dictionary['Plugin_Name_Conversion_Value_Setting'] = '/lib/settings/class-plugin-name-conversion-value-setting.php';
+		$dictionary['Plugin_Name_Input_Setting'] = '/lib/settings/class-plugin-name-input-setting.php';
+		$dictionary['Plugin_Name_Notification_Email_Setting'] = '/lib/settings/class-plugin-name-notification-email-setting.php';
+		$dictionary['Plugin_Name_Quota_Limit_Setting'] = '/lib/settings/class-plugin-name-quota-limit-setting.php';
+		$dictionary['Plugin_Name_Radio_Setting'] = '/lib/settings/class-plugin-name-radio-setting.php';
+		$dictionary['Plugin_Name_Range_Setting'] = '/lib/settings/class-plugin-name-range-setting.php';
+		$dictionary['Plugin_Name_Select_Algorithm_Setting'] = '/lib/settings/class-plugin-name-select-algorithm-setting.php';
+		$dictionary['Plugin_Name_Select_Setting'] = '/lib/settings/class-plugin-name-select-setting.php';
+		$dictionary['Plugin_Name_Setting'] = '/lib/settings/interface-plugin-name-setting.php';
+		$dictionary['Plugin_Name_Text_Area_Setting'] = '/lib/settings/class-plugin-name-text-area-setting.php';
 
 		/**
 		 * @var string $path
 		 */
 		$path = '';
 		if ( isset( $dictionary[$class] ) ) {
-			$path = PLUGIN_NAME_DIR_PATH . $dictionary[$class];
+			$path = PLUGIN_NAME_INCLUDES_DIR . $dictionary[$class];
 		}
 
 		/**
@@ -105,4 +107,4 @@ class Plugin_Name_Autoloader {
 	}
 }
 
-new Plugin_Name_Autoloader();
+new Plugin_Name_Settings_Autoloader();

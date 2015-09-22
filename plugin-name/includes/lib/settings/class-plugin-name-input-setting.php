@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * the specific type also modifies the sanitization function.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 class Plugin_Name_Input_Setting extends Plugin_Name_Abstract_Setting {
@@ -104,7 +104,7 @@ class Plugin_Name_Input_Setting extends Plugin_Name_Abstract_Setting {
 		$type        = $this->type;
 		$placeholder = $this->placeholder;
 		// -----------------------------------------------
-		include PLUGIN_NAME_DIR_PATH . '/admin/views/partials/settings/plugin-name-input-setting.php';
+		include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-input-setting.php';
 
 	}
 

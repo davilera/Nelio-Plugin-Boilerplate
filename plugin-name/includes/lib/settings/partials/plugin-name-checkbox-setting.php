@@ -8,12 +8,12 @@
  * @author     Your Name <your.name@example.com>
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/views/partials/settings
+ * @subpackage Plugin_Name/includes/lib/settings/partials
  */
 
 ?>
 
-<input
+<p><input
 	type="checkbox"
 	id="<?php echo $id; ?>"
 	name="<?php echo $name; ?>"
@@ -25,4 +25,4 @@ if ( ! empty( $more ) ) { ?>
 		_e( 'Read more...' );
 	?></a></span>
 <?php
-} ?>
+} ?></p>

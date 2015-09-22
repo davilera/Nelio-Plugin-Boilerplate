@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * as well as the size of its steps.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 class Plugin_Name_Range_Setting extends Plugin_Name_Abstract_Setting {
@@ -117,7 +117,7 @@ class Plugin_Name_Range_Setting extends Plugin_Name_Abstract_Setting {
 		$max           = $this->max;
 		$step          = $this->step;
 		// -----------------------------------------------
-		include PLUGIN_NAME_DIR_PATH . '/admin/views/partials/settings/plugin-name-range-setting.php';
+		include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-range-setting.php';
 
 	}
 

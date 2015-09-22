@@ -190,11 +190,12 @@ final class Plugin_Name {
 	 */
 	private function load_dependencies() {
 
-		require_once( PLUGIN_NAME_INCLUDES_DIR . '/utils/class-plugin-name-autoloader.php' );
 		require_once( PLUGIN_NAME_INCLUDES_DIR . '/utils/plugin-name-core-functions.php' );
 		require_once( PLUGIN_NAME_INCLUDES_DIR . '/utils/class-plugin-name-i18n.php' );
 
 		require_once( PLUGIN_NAME_INCLUDES_DIR . '/utils/class-plugin-name-install.php' );
+
+		require_once( PLUGIN_NAME_INCLUDES_DIR . '/class-plugin-name-settings.php' );
 
 		if ( $this->is_request( 'admin' ) ) {
 			require_once( PLUGIN_NAME_ADMIN_DIR . '/class-plugin-name-admin.php' );

@@ -6,7 +6,7 @@
  * @since      0.0.0
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  */
 
 
@@ -15,32 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * This class represents an input setting.
- *
- * There are different type of inputs:
- *  * Text,
- *  * E-Mail,
- *  * Number, and
- *  * Password.
- *
- * Depending on the specific type used, the user interface may vary a
- * little bit and will only accept a certain type of data. Moreover,
- * the specific type also modifies the sanitization function.
+ * This class represents a text area setting.
  *
  * @package    Plugin_Name
- * @subpackage Plugin_Name/admin/settings
+ * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
  */
 class Plugin_Name_Text_Area_Setting extends Plugin_Name_Abstract_Setting {
-
-	/**
-	 * The specific type of this HTML input element.
-	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
-	 */
-	protected $type;
 
 	/**
 	 * The concrete value of this field.
@@ -66,16 +47,13 @@ class Plugin_Name_Text_Area_Setting extends Plugin_Name_Abstract_Setting {
 	 * @param    string   $name         The name that identifies this setting.
 	 * @param    string   $desc         A text that describes this field.
 	 * @param    string   $more         A link pointing to more information about this field.
-	 * @param    string   $type         The specific type of this input.
-	 *                                  It can be `text`, `email`, `number`, and `password`.
 	 * @param    string   $placeholder  A placeholder text to be displayed when the field is empty.
 	 *
 	 * @since    0.0.0
 	 * @access   public
 	 */
-	public function __construct( $name, $desc, $more, $type, $placeholder = '' ) {
+	public function __construct( $name, $desc, $more, $placeholder = '' ) {
 		parent::__construct( $name, $desc, $more );
-		$this->type        = $type;
 		$this->placeholder = $placeholder;
 	}
 
@@ -101,10 +79,9 @@ class Plugin_Name_Text_Area_Setting extends Plugin_Name_Abstract_Setting {
 		$desc        = $this->desc;
 		$more        = $this->more;
 		$value       = $this->value;
-		$type        = $this->type;
 		$placeholder = $this->placeholder;
 		// -----------------------------------------------
-		include PLUGIN_NAME_DIR_PATH . '/admin/views/partials/settings/plugin-name-input-setting.php';
+		include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-text-area-setting.php';
 
 	}
 
@@ -114,22 +91,7 @@ class Plugin_Name_Text_Area_Setting extends Plugin_Name_Abstract_Setting {
 			$input[$this->name] = $this->value;
 		}
 
-		$value = $input[$this->name];
-		switch ( $this->type ) {
-			case 'text':
-				$value = $this->sanitize_text( $value );
-				break;
-			case 'password':
-				$value = $this->sanitize_password( $value );
-				break;
-			case 'email':
-				$value = sanitize_email( $value );
-				break;
-			case 'number':
-				$value = $this->sanitize_number( $value );
-				break;
-		}
-
+		$value = $this->sanitize_text( $input[$this->name] );
 		$input[$this->name] = $value;
 
 		return $input;
@@ -148,34 +110,6 @@ class Plugin_Name_Text_Area_Setting extends Plugin_Name_Abstract_Setting {
 	 */
 	private function sanitize_text( $value ) {
 		return sanitize_text_field( $value );
-	}
-
-	/**
-	 * This function checks that the password is strong enough and sanitizes the value.
-	 *
-	 * @param    string   $value   The current value that has to be sanitized.
-	 *
-	 * @return   string   The input text properly sanitized.
-	 *
-	 * @since    0.0.0
-	 * @access   private
-	 */
-	private function sanitize_password( $value ) {
-		return $this->sanitize_text( $value );
-	}
-
-	/**
-	 * This function checks that the input value is a number and converts it to an actual integer.
-	 *
-	 * @param    string   $value   The current value that has to be sanitized.
-	 *
-	 * @return   int      The input text converted into a number.
-	 *
-	 * @since    0.0.0
-	 * @access   private
-	 */
-	private function sanitize_number( $value ) {
-		return intval( $value );
 	}
 
 }

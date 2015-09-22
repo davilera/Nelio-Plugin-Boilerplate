@@ -20,7 +20,7 @@
 <?php
 if ( ! empty( $desc ) ) { ?>
 	<div class="setting-help">
-		<p><span class="description"><?php echo $desc; ?><?php
+		<p><span class="plugin-name-desc description" style="display:none;"><?php echo $desc; ?><?php
 			if ( ! empty( $more ) ) { ?>
 				<a href="<?php echo esc_attr( $more ); ?>"><?php _e( 'Read more...' ); ?></a>
 			<?php

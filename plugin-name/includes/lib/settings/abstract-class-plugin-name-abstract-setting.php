@@ -143,7 +143,7 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 
 		if ( ! empty( $this->desc ) ) {
 			$img = PLUGIN_NAME_ADMIN_URL . '/images/help.png';
-			$label .= '<img style="float:right;margin-right:-15px;" src="' . $img . '" height="16" width="16" />';
+			$label .= '<img class="plugin-name-help" style="float:right;margin-right:-15px;cursor:pointer;" src="' . $img . '" height="16" width="16" />';
 		}
 
 		return $label;

@@ -21,7 +21,7 @@
 <?php
 echo $desc;
 if ( ! empty( $more ) ) { ?>
-	<span class="description"><a href="<?php echo esc_attr( $more ); ?>"><?php
+	<span class="plugin-name-desc description" style="display:none;"><a href="<?php echo esc_attr( $more ); ?>"><?php
 		_e( 'Read more...' );
 	?></a></span>
 <?php

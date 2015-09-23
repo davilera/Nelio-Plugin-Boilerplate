@@ -226,7 +226,7 @@ abstract class Plugin_Name_Abstract_Settings {
 		}
 
 		if ( $field && isset( $field['default'] ) ) {
-			$this->default_values[$name] = $f['default'];
+			$this->default_values[$name] = $field['default'];
 		}
 
 	}

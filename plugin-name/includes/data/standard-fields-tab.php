@@ -18,8 +18,8 @@ return array(
 
 	array( // ===========================================================
 		'type'  => 'section',
-		'name'  => 'plugin-name-a-section',
-		'label' => __( 'A Section', 'plugin-name' )
+		'name'  => 'text-fields',
+		'label' => __( 'Text Fields', 'plugin-name' )
 	), // ===============================================================
 
 	array(
@@ -38,6 +38,12 @@ return array(
 		'desc'        => __( 'Another description, but this time without a "Read more..." link. Cool, huh?', 'plugin-name' ),
 		'placeholder' => __( 'Write a long text here...', 'plugin-name' )
 	),
+
+	array( // ===========================================================
+		'type'  => 'section',
+		'name'  => 'other-fields',
+		'label' => __( 'Other Fields', 'plugin-name' )
+	), // ===============================================================
 
 	array(
 		'type'    => 'checkbox',
@@ -67,12 +73,6 @@ return array(
 			),
 		)
 	),
-
-	array( // ===========================================================
-		'type'  => 'section',
-		'name'  => 'plugin-name-another-section',
-		'label' => __( 'Another Section', 'plugin-name' )
-	), // ===============================================================
 
 	array(
 		'type'    => 'radio',
@@ -119,6 +119,6 @@ return array(
 				'label' => __( 'Option C', 'plugin-name' )
 			)
 		)
-	),
+	)
 
 );

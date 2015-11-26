@@ -85,7 +85,7 @@ done
 find $dir -type "f" | while read file
 do
 	cat "$file" | \
-		sed -e "s/1.0.0/$version/g" | \
+		sed -e "s/0.0.0/$version/g" | \
 		sed -e "s/Plugin Name/$name/g" | \
 		sed -e "s/* $name:/* Plugin Name:/g" | \
 		sed -e "s/Plugin_Name/$prefix/g" | \

@@ -502,6 +502,8 @@ abstract class Plugin_Name_Abstract_Settings {
 
 		// Print the actual tabs (if there's more than one tab).
 		if ( count( $this->tabs ) > 1 && ! $this->current_tab_name ) {
+			$tab = $this->tab;
+			$opened_tab = $this->opened_tab_name;
 			include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-tabs.php';
 			$this->current_tab_name = $this->tabs[0]['name'];
 		} else {

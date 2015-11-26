@@ -68,6 +68,7 @@ echo ""
 
 # Prepare some variables
 domain=`echo "$prefix" | tr "[:upper:]" "[:lower:]"`
+constant=`echo "$prefix" | tr "[:lower:]" "[:upper:]"`
 slug=`echo "$domain" | sed -e "s/_/-/"`
 
 # Create the new plugin
@@ -89,6 +90,7 @@ do
 		sed -e "s/Plugin Name/$name/g" | \
 		sed -e "s/* $name:/* Plugin Name:/g" | \
 		sed -e "s/Plugin_Name/$prefix/g" | \
+		sed -e "s/PLUGIN_NAME/$constant/g" | \
 		sed -e "s/plugin_name/$domain/g" | \
 		sed -e "s/pn_var/plugin_name/g" | \
 		sed -e "s/plugin-name/$slug/g" | \

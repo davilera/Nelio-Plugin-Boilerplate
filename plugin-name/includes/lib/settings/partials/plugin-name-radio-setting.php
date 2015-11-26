@@ -63,7 +63,8 @@ if ( ! empty( $desc ) ) { ?>
 						// @codingStandardsIgnoreStart
 						echo $option['label'];
 						// @codingStandardsIgnoreEnd
-						?>.</strong><?php
+						?>.</strong>
+						<?php
 						// @codingStandardsIgnoreStart
 						echo $option['desc'];
 						// @codingStandardsIgnoreEnd

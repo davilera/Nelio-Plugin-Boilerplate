@@ -1,14 +1,12 @@
 <?php
-
 /**
  * The file that defines an autoloader class, for automatically loading classes.
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,34 +15,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin Name Settings Autoloader
  *
- * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 class Plugin_Name_Settings_Autoloader {
 
 	/**
-	 * The Constructor
+	 * The Constructor.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __construct() {
-		if ( function_exists( "__autoload" ) ) {
-			spl_autoload_register( "__autoload" );
+
+		if ( function_exists( '__autoload' ) ) {
+			spl_autoload_register( '__autoload' );
 		}
 		spl_autoload_register( array( $this, 'autoload' ) );
-	}
+
+	}//end __construct()
 
 	/**
 	 * Loads a class file. Returns whether the file has been successfully loaded.
 	 *
-	 * @param    string   $path    The class file to be loaded.
-	 * @return   bool     Whether the file has been successfully loaded.
+	 * @param string $path The class file to be loaded.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @return bool Whether the file has been successfully loaded.
+	 *
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function load_file( $path ) {
 		if ( $path && is_readable( $path ) ) {
@@ -52,15 +53,15 @@ class Plugin_Name_Settings_Autoloader {
 			return true;
 		}
 		return false;
-	}
+	}//end load_file()
 
 	/**
 	 * Auto-load Plugin_Name classes on demand to reduce memory consumption.
 	 *
-	 * @param    string   $class    ajax, frontend or admin
+	 * @param string $class The class to be loaded.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function autoload( $class ) {
 		if ( strpos( $class, 'Plugin_Name_' ) !== 0 ) {
@@ -83,28 +84,30 @@ class Plugin_Name_Settings_Autoloader {
 		$dictionary['Plugin_Name_Text_Area_Setting'] = '/lib/settings/class-plugin-name-text-area-setting.php';
 
 		/**
+		 * The path.
 		 * @var string $path
 		 */
 		$path = '';
-		if ( isset( $dictionary[$class] ) ) {
-			$path = PLUGIN_NAME_INCLUDES_DIR . $dictionary[$class];
+		if ( isset( $dictionary[ $class ] ) ) {
+			$path = PLUGIN_NAME_INCLUDES_DIR . $dictionary[ $class ];
 		}
 
 		/**
 		 * This action fires right before a certain Plugin Name class is automatically loaded.
 		 *
-		 * @param    string    $class    The name of the class to be loaded.
-		 * @param    string    $path     The path of the file that contains this class.
-		 *                                If it's empty, the class was not found.
+		 * @param string $class The name of the class to be loaded.
+		 * @param string $path  The path of the file that contains this class.
+		 *                      If it's empty, the class was not found.
 		 *
-		 * @since    0.0.0
+		 * @since 0.0.0
 		 */
 		do_action( 'plugin_name_autoload_class', $class, $path );
 
 		if ( ! empty( $path ) ) {
 			$this->load_file( $path );
 		}
-	}
-}
+	}//end autoload()
+
+}//end class
 
 new Plugin_Name_Settings_Autoloader();

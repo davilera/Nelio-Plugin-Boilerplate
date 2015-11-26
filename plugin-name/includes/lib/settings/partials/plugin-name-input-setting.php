@@ -2,28 +2,27 @@
 /**
  * Displays an input setting.
  *
- * @since      0.0.0
- * @author     Your Name <your.name@example.com>
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings/partials
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 
 ?>
 
 <p><input
-	type="<?php echo $type; ?>"
-	id="<?php echo $id; ?>"
-	<?php if ( ! empty( $placeholder ) ) echo 'placeholder="' . esc_attr( $placeholder ) . '"'; ?>
-	name="<?php echo $name; ?>"
+	type="<?php echo esc_attr( $type ); ?>"
+	id="<?php echo esc_attr( $id ); ?>"
+	placeholder="<?php esc_attr( $placeholder ); ?>"
+	name="<?php echo esc_attr( $name ); ?>"
 	<?php
 	if ( 'password' === $type ) { ?>
 		onchange="
-			document.getElementById('<?php echo $id; ?>-check').pattern = this.value;
+			document.getElementById('<?php echo esc_attr( $id ); ?>-check').pattern = this.value;
 			if ( this.value != '' ) {
-				document.getElementById('<?php echo $id; ?>-check').required = 'required';
+				document.getElementById('<?php echo esc_attr( $id ); ?>-check').required = 'required';
 			} else {
-				document.getElementById('<?php echo $id; ?>-check').required = undefined;
+				document.getElementById('<?php echo esc_attr( $id ); ?>-check').required = undefined;
 			}
 		"
 	<?php
@@ -34,19 +33,22 @@
 <?php
 if ( 'password' === $type ) { ?>
 <p><input
-	type="<?php echo $type; ?>"
-	id="<?php echo $id; ?>-check"
+	type="<?php echo esc_attr( $type ); ?>"
+	id="<?php echo esc_attr( $id ); ?>-check"
 	placeholder="<?php esc_attr_e( __( 'Confirm Password...', 'plugin-name' ) ); ?>"
-	name="<?php echo $name; ?>" /></p>
+	name="<?php echo esc_attr( $name ); ?>" /></p>
 <?php
 }
 if ( ! empty( $desc ) ) { ?>
 	<div class="setting-help" style="display:none;">
-		<p><span class="description"><?php echo $desc; ?><?php
-			if ( ! empty( $more ) ) { ?>
-				<a href="<?php echo esc_attr( $more ); ?>"><?php _e( 'Read more...' ); ?></a>
-			<?php
-			} ?>
+		<p><span class="description"><?php
+		// @codingStandardsIgnoreStart
+		echo $desc;
+		// @codingStandardsIgnoreEnd
+		if ( ! empty( $more ) ) { ?>
+			<a href="<?php echo esc_attr( $more ); ?>"><?php esc_html_e( 'Read more...' ); ?></a>
+		<?php
+		} ?>
 		</span></p>
 	</div>
 <?php

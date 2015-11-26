@@ -1,17 +1,15 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,37 +24,37 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 final class Plugin_Name {
 
 	/**
 	 * The single instance of this class.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      Plugin_Name
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    Plugin_Name
 	 */
 	protected static $_instance;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $pn_var;
 
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $version;
 
@@ -67,8 +65,8 @@ final class Plugin_Name {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function __construct() {
 
@@ -90,36 +88,40 @@ final class Plugin_Name {
 		/**
 		 * Fires after (possibly) all dependencies are loaded and hooks are created.
 		 *
-		 * @since      0.0.0
+		 * @since 0.0.0
 		 */
 		do_action( 'plugin_name_loaded' );
 
-	}
+	}//end __construct()
 
 	/**
 	 * Cloning instances of this class is forbidden.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __clone() {
 
+		// @codingStandardsIgnoreStart
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
+		// @codingStandardsIgnoreEnd
 
-	}
+	}//end __clone()
 
 
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __wakeup() {
 
+		// @codingStandardsIgnoreStart
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
+		// @codingStandardsIgnoreEnd
 
-	}
+	}//end __wakeup()
 
 
 	/**
@@ -127,8 +129,8 @@ final class Plugin_Name {
 	 *
 	 * @return Plugin_Name the single instance of this class.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public static function instance() {
 
@@ -137,15 +139,15 @@ final class Plugin_Name {
 		}
 		return self::$_instance;
 
-	}
+	}//end instance()
 
 	/**
 	 * Defines the constants.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
-	public static function define_constants() {
+	public function define_constants() {
 
 		define( 'PLUGIN_NAME_ADMIN_DIR',    PLUGIN_NAME_DIR . '/admin' );
 		define( 'PLUGIN_NAME_PUBLIC_DIR',   PLUGIN_NAME_DIR . '/public' );
@@ -155,15 +157,17 @@ final class Plugin_Name {
 		define( 'PLUGIN_NAME_INCLUDES_URL', PLUGIN_NAME_URL . '/includes' );
 		define( 'PLUGIN_NAME_PUBLIC_URL',   PLUGIN_NAME_URL . '/public' );
 
-	}
+	}//end define_constants()
 
 	/**
 	 * What type of request is this?
-	 * @param    string   $type    ajax, frontend or admin
-	 * @return   bool
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @param string $type Values can be: ajax, frontend, or admin.
+	 *
+	 * @return bool whether the request is of the specified type or not.
+	 *
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function is_request( $type ) {
 
@@ -180,13 +184,13 @@ final class Plugin_Name {
 				return false;
 		}
 
-	}
+	}//end is_request()
 
 	/**
 	 * Load the (minimum) required dependencies for this plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function load_dependencies() {
 
@@ -205,7 +209,7 @@ final class Plugin_Name {
 			require_once( PLUGIN_NAME_PUBLIC_DIR . '/class-plugin-name-public.php' );
 		}
 
-	}
+	}//end load_dependencies()
 
 	/**
 	 * Define the locale for this plugin for internationalization.
@@ -213,8 +217,8 @@ final class Plugin_Name {
 	 * Uses the Plugin_Name_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function set_locale() {
 
@@ -223,13 +227,13 @@ final class Plugin_Name {
 
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
-	}
+	}//end set_locale()
 
 	/**
 	 * Register the main hooks related to the admin area functionality of the plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function define_admin_hooks() {
 
@@ -242,13 +246,13 @@ final class Plugin_Name {
 
 		add_action( 'init', array( $plugin_admin, 'includes' ) );
 
-	}
+	}//end define_admin_hooks()
 
 	/**
 	 * Register the main hooks related to the public-facing functionality of the plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function define_public_hooks() {
 
@@ -257,37 +261,44 @@ final class Plugin_Name {
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
 
-	}
+	}//end define_public_hooks()
 
 	/**
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     0.0.0
-	 * @return    string    The name of the plugin.
+	 * @return string The name of the plugin.
+	 *
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_pn_var() {
 		return $this->pn_var;
-	}
+	}//end get_pn_var()
 
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     0.0.0
-	 * @return    string    The version number of the plugin.
+	 * @return string The version number of the plugin.
+	 *
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_version() {
 		return $this->version;
-	}
+	}//end get_version()
 
-}
+}//end class
 
+// @codingStandardsIgnoreStart
 /**
  * Returns the single instance of the Plugin_Name class.
  *
- * @since    0.0.0
- * @return   Plugin_Name    The single instance of the Plugin_Name class.
+ * @return Plugin_Name The single instance of the Plugin_Name class.
+ *
+ * @since 0.0.0
  */
 function Plugin_Name() {
 	return Plugin_Name::instance();
-}
+}//end Plugin_Name()
+// @codingStandardsIgnoreEnd

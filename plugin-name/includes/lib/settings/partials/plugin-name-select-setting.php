@@ -2,27 +2,28 @@
 /**
  * Displays a select setting.
  *
- * @since      0.0.0
- * @author     Your Name <your.name@example.com>
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings/partials
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 
 ?>
 
 <select
-	id="<?php echo $id; ?>"
-	name="<?php echo $name; ?>">
+	id="<?php echo esc_attr( $id ); ?>"
+	name="<?php echo esc_attr( $name ); ?>">
 
 	<?php
 	foreach ( $options as $option ) { ?>
-		<option value="<?php echo $option['value']; ?>"<?php
-			if ( $option['value'] == $value ) {
-				echo ' selected="selected"';
-			}
-			?>><?php
-			echo $option['label'];
+		<option value="<?php echo esc_attr( $option['value'] ); ?>"<?php
+		if ( $option['value'] === $value ) {
+			echo ' selected="selected"';
+		}
+		?>><?php
+		// @codingStandardsIgnoreStart
+		echo $option['label'];
+		// @codingStandardsIgnoreEnd
 		?></option>
 	<?php
 	} ?>
@@ -39,25 +40,36 @@ foreach ( $options as $option ) {
 
 if ( ! empty( $desc ) ) { ?>
 	<div class="setting-help" style="display:none;">
-		<p><span class="description"><?php echo $desc; ?><?php
-			if ( ! empty( $more ) ) { ?>
-				<a href="<?php echo esc_attr( $more ); ?>"><?php _e( 'Read more...' ); ?></a>
+	<p><span class="description"><?php
+	// @codingStandardsIgnoreStart
+	echo $desc;
+	// @codingStandardsIgnoreEnd
+	if ( ! empty( $more ) ) { ?>
+		<a href="<?php echo esc_attr( $more ); ?>"><?php esc_html_e( 'Read more...' ); ?></a>
+	<?php
+	} ?>
+	</span></p>
+
+	<?php
+	if ( count( $described_options ) > 0 ) { ?>
+		<ul style="list-style-type:disc;margin-left:3em;">
+			<?php
+			foreach ( $described_options as $option ) { ?>
+				<li><span class="description"><strong><?php
+					// @codingStandardsIgnoreStart
+					echo $option['label'];
+					// @codingStandardsIgnoreEnd
+				?>.</strong>
+				<?php
+					// @codingStandardsIgnoreStart
+					echo $option['desc'];
+					// @codingStandardsIgnoreEnd
+				?></span></li>
 			<?php
 			} ?>
-		</span></p>
-
-		<?php
-		if ( count( $described_options ) > 0 ) { ?>
-			<ul style="list-style-type:disc;margin-left:3em;">
-				<?php
-				foreach ( $described_options as $option ) { ?>
-					<li><span class="description"><strong><?php echo $option['label']; ?>.</strong>
-						<?php echo $option['desc']; ?></span></li>
-				<?php
-				} ?>
-			</ul>
-		<?php
-		} ?>
+		</ul>
+	<?php
+	} ?>
 
 	</div>
 <?php

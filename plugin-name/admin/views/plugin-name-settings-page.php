@@ -2,17 +2,17 @@
 /**
  * Displays the UI for configuring the plugin.
  *
- * @since      0.0.0
- * @author     Your Name <your.name@example.com>
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/admin/views
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
+
 ?>
 
 <div class="wrap">
 
-	<h2><?php _e( 'Plugin Name - Settings', 'plugin-name' ); ?></h2>
+	<h2><?php esc_html_e( 'Plugin Name - Settings', 'plugin-name' ); ?></h2>
 
 	<?php settings_errors(); ?>
 

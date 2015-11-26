@@ -1,14 +1,12 @@
 <?php
-
 /**
  * This file contains the class for managing any plugin's settings.
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,28 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class processes an array of settings and makes them available to WordPress.
  *
- * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 abstract class Plugin_Name_Abstract_Settings {
 
 	/**
 	 * The name that identifies Plugin Name's Settings
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      string
+	 * @since  0.0.0
+	 * @access private
+	 * @var    string
 	 */
 	private $name;
 
 	/**
 	 * An array of settings that have been requested and where not found in the associated get_option entry.
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      array
+	 * @since  0.0.0
+	 * @access private
+	 * @var    array
 	 */
 	private $default_values;
 
@@ -55,9 +53,9 @@ abstract class Plugin_Name_Abstract_Settings {
 	 * )
 	 * `
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      array
+	 * @since  0.0.0
+	 * @access private
+	 * @var    array
 	 */
 	private $tabs;
 
@@ -66,9 +64,9 @@ abstract class Plugin_Name_Abstract_Settings {
 	 *
 	 * This is an aux var for enclosing all fields within a tab.
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      string
+	 * @since  0.0.0
+	 * @access private
+	 * @var    string
 	 */
 	private $current_tab_name = false;
 
@@ -77,17 +75,20 @@ abstract class Plugin_Name_Abstract_Settings {
 	 *
 	 * This variable depends on the value of `$_GET['tab']`.
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      string
+	 * @since  0.0.0
+	 * @access private
+	 * @var    string
 	 */
 	private $opened_tab_name = false;
 
 	/**
 	 * Initialize the class, set its properties, and add the proper hooks.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
+	 * @param string $name The name of this options group.
+	 * @param array  $tabs An array with the available tabs and the fields within each tab.
+	 *
+	 * @since  0.0.0
+	 * @access protected
 	 */
 	protected function __construct( $name, $tabs ) {
 
@@ -100,106 +101,111 @@ abstract class Plugin_Name_Abstract_Settings {
 			/**
 			 * Filters the sections and fields of the given tab.
 			 *
-			 * @since    0.0.0
+			 * @param array $fields The fields (and sections) of the given tab in the settings screen.
 			 *
-			 * @param    array    $fields    The fields (and sections) of the given tab in the settings screen.
+			 * @since 0.0.0
 			 */
-			$this->tabs[$key]['fields'] = apply_filters( 'plugin_name_' . $tab['name']. '_settings',
-				$tab['fields'] );
+			$this->tabs[ $key ]['fields'] = apply_filters( 'plugin_name_' . $tab['name']. '_settings',
+				$tab['fields']
+			);
 
 		}
 
-		// Let's see which tab has to be enabled
+		// Let's see which tab has to be enabled.
 		$this->opened_tab_name = $this->tabs[0]['name'];
-		if ( isset( $_GET['tab'] ) ) {
+		if ( isset( $_GET['tab'] ) ) { // Input var okay.
 			foreach ( $this->tabs as $tab ) {
-				if ( $_GET['tab'] === $tab['name'] ) {
+				if ( $_GET['tab'] === $tab['name'] ) { // Input var okay.
 					$this->opened_tab_name = $tab['name'];
 				}
 			}
 		}
-	}
+
+	}//end __construct()
 
 	/**
 	 * Cloning instances of this class is forbidden.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __clone() {
 
+		// @codingStandardsIgnoreStart
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
+		// @codingStandardsIgnoreEnd
 
-	}
+	}//end __clone()
 
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __wakeup() {
 
+		// @codingStandardsIgnoreStart
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), '0.0.0' );
+		// @codingStandardsIgnoreEnd
 
-	}
+	}//end __wakeup()
 
 	/**
 	 * Register the main hooks related to the settings page.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function define_admin_hooks() {
 
 		add_action( 'admin_init', array( $this, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-	}
+	}//end define_admin_hooks()
 
 	/**
 	 * Returns the value of the given setting.
 	 *
-	 * @param    string   $name    The name of the parameter whose value we want to obtain.
-	 * @param    object   $value   Optional. Default value if the setting is not found and
-	 *                             the setting didn't define a default value already.
-	 *                             Default: `false`.
+	 * @param string $name  The name of the parameter whose value we want to obtain.
+	 * @param object $value Optional. Default value if the setting is not found and
+	 *                      the setting didn't define a default value already.
+	 *                      Default: `false`.
 	 *
-	 * @return   object   The concrete value of the specified parameter.
-	 *                    If the setting has never been saved and it registered no
-	 *                    default value (during the construction of `Plugin_Name_Settings`),
-	 *                    then the parameter `$value` will be returned instead.
+	 * @return object The concrete value of the specified parameter.
+	 *                If the setting has never been saved and it registered no
+	 *                default value (during the construction of `Plugin_Name_Settings`),
+	 *                then the parameter `$value` will be returned instead.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get( $name, $value = false ) {
 
 		$settings = get_option( $this->get_name(), array() );
-		if ( isset( $settings[$name] ) ) {
-			return $settings[$name];
+		if ( isset( $settings[ $name ] ) ) {
+			return $settings[ $name ];
 		}
 
 		$this->maybe_set_default_value( $name );
-		if ( isset( $this->default_values[$name] ) ) {
-			return $this->default_values[$name];
+		if ( isset( $this->default_values[ $name ] ) ) {
+			return $this->default_values[ $name ];
 		} else {
 			return $value;
 		}
 
-	}
+	}//end get()
 
 	/**
 	 * Looks for the default value of $name (if any) and saves it in the default values array.
 	 *
-	 * @param    string   $value   The name of the field whose default value we want to obtain.
+	 * @param string $name The name of the field whose default value we want to obtain.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function maybe_set_default_value( $name ) {
 
-		$field = NULL;
 		foreach ( $this->tabs as $tab ) {
 			foreach ( $tab['fields'] as $f ) {
 				switch ( $f['type'] ) {
@@ -226,16 +232,16 @@ abstract class Plugin_Name_Abstract_Settings {
 		}
 
 		if ( $field && isset( $field['default'] ) ) {
-			$this->default_values[$name] = $field['default'];
+			$this->default_values[ $name ] = $field['default'];
 		}
 
-	}
+	}//end maybe_set_default_value()
 
 	/**
 	 * Registers all settings in WordPress using the Settings API.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function register() {
 
@@ -245,13 +251,13 @@ abstract class Plugin_Name_Abstract_Settings {
 			$this->register_tab( $tab );
 		}
 
-	}
+	}//end register()
 
 	/**
 	 * Enqueues all required scripts.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function enqueue_scripts() {
 
@@ -260,35 +266,36 @@ abstract class Plugin_Name_Abstract_Settings {
 			PLUGIN_NAME_INCLUDES_URL . '/lib/settings/assets/js/settings.js',
 			array(),
 			Plugin_Name()->get_version(),
-			true );
+			true
+		);
 
-	}
+	}//end enqueue_scripts()
 
 	/**
 	 * Registers the given tab in the Settings page.
 	 *
-	 * @param    array    $tabs   A list with all fields.
+	 * @param array $tab A list with all fields.
 	 *
-	 * @since    0.0.0
-	 * @access   private
+	 * @since  0.0.0
+	 * @access private
 	 */
 	private function register_tab( $tab ) {
 
 		// Create a default section (which will also be used for enclosing all
-		// fields within the current tab)
+		// fields within the current tab).
 		$section = 'plugin-name-' . $tab['name'] . '-opening-section';
 		add_settings_section(
-				$section,
-				'',
-				array( $this, 'open_field_section' ),
-				$this->get_settings_page_name()
-			);
+			$section,
+			'',
+			array( $this, 'open_field_section' ),
+			$this->get_settings_page_name()
+		);
 
 		foreach ( $tab['fields'] as $field ) {
 
 			$defaults = array(
 				'desc' => '',
-				'more' => ''
+				'more' => '',
 			);
 			$field = wp_parse_args( $field, $defaults );
 
@@ -377,7 +384,7 @@ abstract class Plugin_Name_Abstract_Settings {
 					foreach ( $field['options'] as $cb ) {
 						$tuple = array(
 								'name'  => $cb['name'],
-								'value' => $value
+								'value' => $value,
 							);
 						$setting->set_value( $tuple );
 					}
@@ -416,7 +423,8 @@ abstract class Plugin_Name_Abstract_Settings {
 						$field['name'],
 						$field['desc'],
 						$field['more'],
-						$field['options'] );
+						$field['options']
+					);
 
 					$value = $this->get( $field['name'] );
 					$setting->set_value( $value );
@@ -435,7 +443,8 @@ abstract class Plugin_Name_Abstract_Settings {
 						$field['name'],
 						$field['desc'],
 						$field['more'],
-						$field['options'] );
+						$field['options']
+					);
 
 					$value = $this->get( $field['name'] );
 					$setting->set_value( $value );
@@ -470,98 +479,97 @@ abstract class Plugin_Name_Abstract_Settings {
 			}
 		}
 
-		// Close tab
+		// Close tab.
 		$section = 'plugin-name-' . $tab['name'] . '-closing-section';
 		add_settings_section(
-				$section,
-				'',
-				array( $this, 'close_field_section' ),
-				$this->get_settings_page_name()
-			);
+			$section,
+			'',
+			array( $this, 'close_field_section' ),
+			$this->get_settings_page_name()
+		);
 
-	}
+	}//end register_tab()
 
 	/**
 	 * Opens a DIV tag for enclosing all fields within a tab.
 	 *
 	 * If the tab we're opening is the first one, we also print the actual tabs.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function open_field_section() {
 
-		// Print the actual tabs (if there's more than one tab)
+		// Print the actual tabs (if there's more than one tab).
 		if ( count( $this->tabs ) > 1 && ! $this->current_tab_name ) {
-			$tabs = $this->tabs;
-			$opened_tab = $this->opened_tab_name;
 			include PLUGIN_NAME_INCLUDES_DIR . '/lib/settings/partials/plugin-name-tabs.php';
 			$this->current_tab_name = $this->tabs[0]['name'];
 		} else {
 			$previous_name = $this->current_tab_name;
 			$this->current_tab_name = false;
-			for ( $i = 0; $i < count( $this->tabs ) - 1 && ! $this->current_tab_name; ++$i ) {
-				if ( $this->tabs[$i]['name'] === $previous_name ) {
-					$current_tab = $this->tabs[$i+1];
+			$num_of_tabs = count( $this->tabs );
+			for ( $i = 0; $i < $num_of_tabs - 1 && ! $this->current_tab_name; ++$i ) {
+				if ( $this->tabs[ $i ]['name'] === $previous_name ) {
+					$current_tab = $this->tabs[ $i + 1 ];
 					$this->current_tab_name = $current_tab['name'];
 				}
 			}
 		}
 
-		// And now group all the fields under
+		// And now group all the fields under.
 		if ( $this->current_tab_name === $this->opened_tab_name ) {
-			$invisible = '';
+			echo '<div id="' . esc_attr( $this->current_tab_name ) . '-tab-content" class="tab-content">';
 		} else {
-			$invisible = ' style="display:none;"';
+			echo '<div id="' . esc_attr( $this->current_tab_name ) . '-tab-content" class="tab-content" style="display:none;">';
 		}
-		echo '<div id="' . $this->current_tab_name . '-tab-content" class="tab-content"' . $invisible . '>';
-	}
+
+	}//end open_field_section()
 
 	/**
 	 * Closes a tab div.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function close_field_section() {
 		echo '</div>';
-	}
+	}//end close_field_section()
 
 	/**
 	 * Get the name of the option group.
 	 *
-	 * @return   string    the name of the settings.
+	 * @return string the name of the settings.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_name() {
 		return $this->name . '_settings';
-	}
+	}//end get_name()
 
 	/**
 	 * Get the name of the option group.
 	 *
-	 * @return   string    the name of the option group.
+	 * @return string the name of the option group.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_option_group() {
 		return $this->name . '_group';
-	}
+	}//end get_option_group()
 
 	/**
 	 * Get the name of the option group.
 	 *
-	 * @return   string    the name of the option group.
+	 * @return string the name of the option group.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_settings_page_name() {
 		return $this->name . '-settings-page';
-	}
+	}//end get_settings_page_name()
 
-}
+}//end class
 

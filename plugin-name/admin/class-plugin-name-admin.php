@@ -1,14 +1,12 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/admin
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,42 +21,50 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    Plugin_Name
  * @subpackage Plugin_Name/admin
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 class Plugin_Name_Admin {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      string    $pn_var    The ID of this plugin.
+	 * @since  0.0.0
+	 * @access private
+	 * @var    string $pn_var
 	 */
 	private $pn_var;
 
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    0.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @since  0.0.0
+	 * @access private
+	 * @var    string
 	 */
 	private $version;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @param      string    $pn_var       The name of this plugin.
-	 * @param      string    $version           The version of this plugin.
+	 * @param string $pn_var  The name of this plugin.
+	 * @param string $version The version of this plugin.
 	 *
-	 * @since    0.0.0
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __construct( $pn_var, $version ) {
 
 		$this->pn_var = $pn_var;
 		$this->version = $version;
 
-	}
+	}//end __construct()
 
+	/**
+	 * Includes all required classes.
+	 *
+	 * @since  0.0.0
+	 * @access public
+	 */
 	public function includes() {
 
 		if ( ! defined( 'DOING_AJAX' ) ) {
@@ -67,28 +73,31 @@ class Plugin_Name_Admin {
 			$admin_menus->define_admin_hooks();
 		}
 
-	}
+	}//end includes()
 
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    0.0.0
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function enqueue_styles() {
 
 		wp_enqueue_style( $this->pn_var, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all' );
 
-	}
+	}//end enqueue_styles()
 
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    0.0.0
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( $this->pn_var, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
 
-	}
+	}//end enqueue_scripts()
 
-}
+}//end class
+

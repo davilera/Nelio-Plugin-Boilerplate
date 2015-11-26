@@ -1,14 +1,12 @@
 <?php
-
 /**
  * Fired during plugin deactivation
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/utils
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      0.0.0
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/utils
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 class Plugin_Name_Deactivator {
 
@@ -31,10 +29,11 @@ class Plugin_Name_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    0.0.0
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public static function deactivate() {
 
-	}
+	}//end deactivate()
 
-}
+}//end class

@@ -1,14 +1,12 @@
 <?php
-
 /**
  * Abstract class that implements the `register` method of the `Plugin_Name_Setting` interface.
  *
- * @since      0.0.0
- *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
+ * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
-
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,65 +21,66 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    Plugin_Name
  * @subpackage Plugin_Name/includes/lib/settings
  * @author     Your Name <your.name@example.com>
+ * @since      0.0.0
  */
 abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 
 	/**
 	 * The label associated to this setting.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $label;
 
 	/**
 	 * The name that identifies this setting.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $name;
 
 	/**
 	 * A text that describes this field.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $desc;
 
 	/**
 	 * A link pointing to more information about this field.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $more;
 
 	/**
 	 * The option name in which this setting will be stored.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
-	 * @var      string
+	 * @since  0.0.0
+	 * @access protected
+	 * @var    string
 	 */
 	protected $option_name;
 
 	/**
 	 * Creates a new instance of this class.
 	 *
-	 * @param    string   $name   The name that identifies this setting.
-	 * @param    string   $desc   Optional. A text that describes this field.
-	 *                            Default: the empty string.
-	 * @param    string   $more   Optional. A link pointing to more information about this field.
-	 *                            Default: the empty string.
+	 * @param string $name The name that identifies this setting.
+	 * @param string $desc Optional. A text that describes this field.
+	 *                     Default: the empty string.
+	 * @param string $more Optional. A link pointing to more information about this field.
+	 *                     Default: the empty string.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function __construct( $name, $desc = '', $more = '' ) {
 
@@ -89,22 +88,24 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 		$this->desc = $desc;
 		$this->more = $more;
 
-	}
+	}//end __construct()
 
 	/**
 	 * Returns the name that identifies this setting.
 	 *
-	 * @return   string   The name that identifies this setting.
+	 * @return string The name that identifies this setting.
 	 *
-	 * @since    0.0.0
-	 * @access   public
+	 * @since  0.0.0
+	 * @access public
 	 */
 	public function get_name() {
 		return $this->name;
-	}
+	}//end get_name()
 
+	// @codingStandardsIgnoreStart
 	// @Implements
 	public function register( $label, $page, $section, $option_group, $option_name ) {
+	// @codingStandardsIgnoreEnd
 
 		$this->label       = $label;
 		$this->option_name = $option_name;
@@ -112,19 +113,19 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 		register_setting(
 			$option_group,
 			$option_name,
-			array( $this, 'sanitize' ) // Sanitization function
+			array( $this, 'sanitize' ) // Sanitization function.
 		);
 
 		$label = $this->generate_label();
 		add_settings_field(
-			$this->name,  // The ID of the settings field
-			$label,       // The name of the field of setting(s)
+			$this->name,  // The ID of the settings field.
+			$label,       // The name of the field of setting(s).
 			array( $this, 'display' ),
 			$page,
 			$section
 		);
 
-	}
+	}//end register()
 
 	/**
 	 * This function generates a label for this field.
@@ -132,10 +133,10 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 	 * In particular, it adds the `label` tag and a help icon (if a description
 	 * was provided).
 	 *
-	 * @return   string   the label for this field.
+	 * @return string the label for this field.
 	 *
-	 * @since    0.0.0
-	 * @access   protected
+	 * @since  0.0.0
+	 * @access protected
 	 */
 	protected function generate_label() {
 
@@ -148,6 +149,6 @@ abstract class Plugin_Name_Abstract_Setting implements Plugin_Name_Setting {
 
 		return $label;
 
-	}
+	}//end generate_label()
 
-}
+}//end class

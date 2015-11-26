@@ -25,7 +25,7 @@
 <p><input
 	type="<?php echo esc_attr( $type ); ?>"
 	id="<?php echo esc_attr( $id ); ?>"
-	placeholder="<?php esc_attr( $placeholder ); ?>"
+	placeholder="<?php echo esc_attr( $placeholder ); ?>"
 	name="<?php echo esc_attr( $name ); ?>"
 	<?php
 	if ( 'password' === $type ) { ?>

@@ -49,7 +49,7 @@ final class Plugin_Name {
 	 * @access   protected
 	 * @var      string
 	 */
-	protected $plugin_name;
+	protected $pn_var;
 
 	/**
 	 * The current version of the plugin.
@@ -72,7 +72,7 @@ final class Plugin_Name {
 	 */
 	private function __construct() {
 
-		$this->plugin_name = 'plugin_name';
+		$this->pn_var = 'plugin_name';
 		$this->version = '0.0.0';
 
 		$this->define_constants();
@@ -219,7 +219,7 @@ final class Plugin_Name {
 	private function set_locale() {
 
 		$plugin_i18n = new Plugin_Name_i18n();
-		$plugin_i18n->set_domain( $this->get_plugin_name() );
+		$plugin_i18n->set_domain( $this->get_pn_var() );
 
 		add_action( 'plugins_loaded', array( $plugin_i18n, 'load_plugin_textdomain' ) );
 
@@ -233,7 +233,7 @@ final class Plugin_Name {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Plugin_Name_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Plugin_Name_Admin( $this->get_pn_var(), $this->get_version() );
 
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_scripts' ) );
@@ -252,7 +252,7 @@ final class Plugin_Name {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Plugin_Name_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Plugin_Name_Public( $this->get_pn_var(), $this->get_version() );
 
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $plugin_public, 'enqueue_scripts' ) );
@@ -266,8 +266,8 @@ final class Plugin_Name {
 	 * @since     0.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
+	public function get_pn_var() {
+		return $this->pn_var;
 	}
 
 	/**

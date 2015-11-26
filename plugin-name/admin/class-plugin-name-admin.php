@@ -31,9 +31,9 @@ class Plugin_Name_Admin {
 	 *
 	 * @since    0.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string    $pn_var    The ID of this plugin.
 	 */
-	private $plugin_name;
+	private $pn_var;
 
 	/**
 	 * The version of this plugin.
@@ -47,14 +47,14 @@ class Plugin_Name_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @param      string    $plugin_name       The name of this plugin.
+	 * @param      string    $pn_var       The name of this plugin.
 	 * @param      string    $version           The version of this plugin.
 	 *
 	 * @since    0.0.0
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $pn_var, $version ) {
 
-		$this->plugin_name = $plugin_name;
+		$this->pn_var = $pn_var;
 		$this->version = $version;
 
 	}
@@ -76,7 +76,7 @@ class Plugin_Name_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->pn_var, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -87,7 +87,7 @@ class Plugin_Name_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->pn_var, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 

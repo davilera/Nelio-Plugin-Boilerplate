@@ -90,6 +90,7 @@ do
 		sed -e "s/* $name:/* Plugin Name:/g" | \
 		sed -e "s/Plugin_Name/$prefix/g" | \
 		sed -e "s/plugin_name/$domain/g" | \
+		sed -e "s/pn_var/plugin_name/g" | \
 		sed -e "s/plugin-name/$slug/g" | \
 		sed -e "s/Your Name/$author/g" | \
 		sed -e "s/your.name@example.com/$email/g" > "$dir/aux"

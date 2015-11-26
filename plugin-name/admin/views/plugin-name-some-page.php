@@ -20,6 +20,6 @@
 
 	<h2><?php esc_html_e( 'Some Page', 'plugin-name' ); ?></h2>
 
-	<!-- Add page contents here. For instance: -->
+	<!-- Add page contents here. -->
 
 </div><!-- .wrap -->

@@ -8,6 +8,12 @@
  * @since      0.0.0
  */
 
+/**
+ * List of vars used in this partial:
+ *
+ * None.
+ */
+
 ?>
 
 <div class="wrap">

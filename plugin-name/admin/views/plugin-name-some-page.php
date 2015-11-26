@@ -1,11 +1,17 @@
 <?php
 /**
- * Displays the UI for the Main Page.
+ * Displays the UI for some page.
  *
  * @package    Plugin_Name
  * @subpackage Plugin_Name/admin/views
  * @author     Your Name <your.name@example.com>
  * @since      0.0.0
+ */
+
+/**
+ * List of vars used in this partial:
+ *
+ * None.
  */
 
 ?>

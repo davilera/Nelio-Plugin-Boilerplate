@@ -9,7 +9,7 @@
  */
 
 /**
- * These are the variables that must be provided by the calling PHP file:
+ * List of vars used in this partial:
  *
  * @var string $example Required. Some random string for testing purposes.
  */
